@@ -124,6 +124,10 @@ internal class MaterialRecyclerViewPopupWindow(
         popup.inputMethodMode = PopupWindow.INPUT_METHOD_NEEDED
         popup.isFocusable = true
         popup.animationStyle = animationStyle
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            popup.enterTransition = null
+            popup.exitTransition = null
+        }
         popupMaxWidth = context.resources.getDimensionPixelSize(R.dimen.mpm_popup_menu_max_width)
         popupMinWidth = context.resources.getDimensionPixelSize(R.dimen.mpm_popup_menu_min_width)
         popupWidthUnit = context.resources.getDimensionPixelSize(R.dimen.mpm_popup_menu_width_unit)

@@ -31,7 +31,7 @@
     </style>
 
     <style name="Widget.MPM.Menu.Animation">
-        <item name="android:windowEnterAnimation">@null</item>
-        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:windowEnterAnimation">@anim/anim_popup_dropdown_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_popup_dropdown_out</item>
     </style>
 </resources>
