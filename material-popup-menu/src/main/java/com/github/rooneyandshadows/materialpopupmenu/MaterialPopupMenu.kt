@@ -10,12 +10,15 @@ import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
 import androidx.annotation.UiThread
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.github.rooneyandshadows.materialpopupmenu.internal.MaterialRecyclerViewPopupWindow
 import com.github.rooneyandshadows.materialpopupmenu.internal.PopupMenuAdapter
 
 
 class MaterialPopupMenu
 internal constructor(
+    internal val lifecycleOwner: LifecycleOwner?,
     @StyleRes internal val style: Int,
     @StyleRes internal val animationStyle: Int,
     internal val dropdownGravity: Int,
@@ -24,10 +27,18 @@ internal constructor(
     internal val dropDownVerticalOffset: Int?,
     internal val dropDownHorizontalOffset: Int?
 ) {
-
     private var popupWindow: MaterialRecyclerViewPopupWindow? = null
-
     private var dismissListener: (() -> Unit)? = null
+    private val observer = object : DefaultLifecycleObserver {
+        override fun onPause(owner: LifecycleOwner) {
+            dismiss()
+        }
+    }
+
+    init {
+        lifecycleOwner?.lifecycle?.removeObserver(observer)
+        lifecycleOwner?.lifecycle?.addObserver(observer)
+    }
 
     /**
      * Shows a popup menu in the UI.

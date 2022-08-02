@@ -7,6 +7,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
+import androidx.lifecycle.LifecycleOwner
 
 
 @PopupMenuMarker
@@ -27,6 +28,8 @@ class MaterialPopupMenuBuilder {
     var style: Int = 0
 
     var animationStyle: Int = 0
+
+    var lifecycleOwner: LifecycleOwner? = null
 
     /**
      * Gravity of the dropdown list. This is commonly used to
@@ -78,6 +81,7 @@ class MaterialPopupMenuBuilder {
         val sections = sectionHolderList.map { it.convertToPopupMenuSection() }
 
         return MaterialPopupMenu(
+            lifecycleOwner = lifecycleOwner,
             style = style,
             animationStyle = animationStyle,
             dropdownGravity = dropdownGravity,
