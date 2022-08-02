@@ -2,7 +2,7 @@
   <img src ="./art/logo_vertical.png" width="256" />
 </p>
 
-# Material Popup Menu ![GitHubActions](https://github.com/zawadz88/MaterialPopupMenu/workflows/Android%20CI/badge.svg?branch=master)
+# Material Popup Menu
 
 This library allows to create simple popup menus programmatically with a nice [type-safe builder syntax in Kotlin](https://kotlinlang.org/docs/reference/type-safe-builders.html). Menus can be divided into separate sections with optional headers and contain icons.
 
@@ -10,7 +10,7 @@ This library allows to create simple popup menus programmatically with a nice [t
 
 ## Download (from JCenter)
 ```groovy
-implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:4.1.0'
+implementation 'com.github.rooneyandshadows:MaterialPopupMenu:1.0.0'
 ```
 
 ## Getting started
@@ -186,7 +186,7 @@ E.g. to use the primary color you could define the style like this:
 ```
 
 ## Documentation
-HTML documentation of the current version of the library is available [here](https://zawadz88.github.io/MaterialPopupMenu/material-popup-menu/).
+HTML documentation of the current version of the library is available [here](https://rooneyandshadows.github.io/MaterialPopupMenu/material-popup-menu/).
 
 ## Third Party Bindings
 

@@ -19,6 +19,8 @@
 
     <attr name="materialPopupMenuStyle" format="reference" />
 
+    <attr name="materialPopupAnimationStyle" format="reference" />
+
     <declare-styleable name="MaterialRecyclerViewPopupWindow">
         <attr name="android:dropDownHorizontalOffset" />
         <attr name="android:dropDownVerticalOffset" />

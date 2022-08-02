@@ -13,18 +13,11 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.github.rooneyandshadows.materialpopupmenu.internal.MaterialRecyclerViewPopupWindow
 import com.github.rooneyandshadows.materialpopupmenu.internal.PopupMenuAdapter
 
-/**
- * Holds all the required information for showing a popup menu.
- *
- * @param style Style of the popup menu. See [MaterialPopupMenuBuilder.style]
- * @param dropdownGravity Gravity of the dropdown list. See [MaterialPopupMenuBuilder.dropdownGravity]
- * @param sections a list of sections
- *
- * @author Piotr Zawadzki
- */
+
 class MaterialPopupMenu
 internal constructor(
     @StyleRes internal val style: Int,
+    @StyleRes internal val animationStyle: Int,
     internal val dropdownGravity: Int,
     internal val sections: List<PopupMenuSection>,
     internal val fixedContentWidthInPx: Int,
@@ -46,9 +39,11 @@ internal constructor(
     @UiThread
     fun show(context: Context, anchor: View) {
         val style = resolvePopupStyle(context)
+        val animationStyle = resolvePopupAnimationStyle(context)
         val styledContext = ContextThemeWrapper(context, style)
         val popupWindow = MaterialRecyclerViewPopupWindow(
             context = styledContext,
+            animationStyle = animationStyle,
             dropDownGravity = dropdownGravity,
             fixedContentWidthInPx = fixedContentWidthInPx,
             dropDownVerticalOffset = dropDownVerticalOffset,
@@ -89,6 +84,18 @@ internal constructor(
 
         val a = context.obtainStyledAttributes(intArrayOf(R.attr.materialPopupMenuStyle))
         val resolvedStyle = a.getResourceId(0, R.style.Widget_MPM_Menu)
+        a.recycle()
+
+        return resolvedStyle
+    }
+
+    private fun resolvePopupAnimationStyle(context: Context): Int {
+        if (animationStyle != 0) {
+            return animationStyle
+        }
+
+        val a = context.obtainStyledAttributes(intArrayOf(R.attr.materialPopupAnimationStyle))
+        val resolvedStyle = a.getResourceId(0, R.style.Widget_MPM_Menu_Animation)
         a.recycle()
 
         return resolvedStyle

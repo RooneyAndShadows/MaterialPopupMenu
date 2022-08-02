@@ -8,14 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 
-/**
- * Builder for creating a [MaterialPopupMenu].
- *
- * The [MaterialPopupMenu] must have at least one section.
- * All sections must also have at least one item and each item must have a non-null label set.
- *
- * @author Piotr Zawadzki
- */
+
 @PopupMenuMarker
 class MaterialPopupMenuBuilder {
 
@@ -32,6 +25,8 @@ class MaterialPopupMenuBuilder {
      * are also declared in your style.
      */
     var style: Int = 0
+
+    var animationStyle: Int = 0
 
     /**
      * Gravity of the dropdown list. This is commonly used to
@@ -84,6 +79,7 @@ class MaterialPopupMenuBuilder {
 
         return MaterialPopupMenu(
             style = style,
+            animationStyle = animationStyle,
             dropdownGravity = dropdownGravity,
             sections = sections,
             fixedContentWidthInPx = fixedContentWidthInPx,
